@@ -12,7 +12,10 @@
   "routes": [
     {
       "src": "/(\\d+)\\.lua",
-      "dest": "/api/[appId].lua.js"
+      "dest": "/api/[appId].lua.js",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
     },
     {
       "src": "/health",
