@@ -12,21 +12,15 @@
   "routes": [
     {
       "src": "/(\\d+)\\.lua",
-      "dest": "/api/[appId].lua?appId=$1",
-      "headers": {
-        "Cache-Control": "public, max-age=86400"
-      }
+      "dest": "/api/[appId].lua.js"
     },
     {
       "src": "/health",
-      "dest": "/api/health"
+      "dest": "/api/health.js"
     },
     {
       "src": "/",
-      "dest": "/api/health"
+      "dest": "/api/health.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
