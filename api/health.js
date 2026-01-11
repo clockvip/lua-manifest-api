@@ -1,22 +1,22 @@
-// api/health.js
 export default function handler(req, res) {
-  const cache = globalThis.luaCache || new Map();
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store');
   
   res.status(200).json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development',
-    cache: {
-      size: cache.size,
-      uptime: process.uptime()
-    },
+    service: 'Lua Manifest Proxy API',
+    version: '1.0.0',
     endpoints: {
-      luaFile: 'GET /api/:appId.lua',
-      health: 'GET /api/health'
+      luaFile: 'GET /:appId.lua',
+      health: 'GET /health'
     },
-    github: {
-      hasToken: !!process.env.GITHUB_TOKEN,
-      rateLimit: '5000/hour (with token)'
-    }
+    note: 'Proxying files from github.com/SteamAutoCracks/ManifestHub'
   });
 }
+
+export const config = {
+  api: {
+    responseLimit: '1mb'
+  }
+};
