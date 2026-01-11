@@ -1,0 +1,32 @@
+{
+  "functions": {
+    "api/[appId].lua.js": {
+      "maxDuration": 10,
+      "memory": 1024
+    },
+    "api/health.js": {
+      "maxDuration": 5,
+      "memory": 128
+    }
+  },
+  "routes": [
+    {
+      "src": "/(\\d+)\\.lua",
+      "dest": "/api/[appId].lua?appId=$1",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "src": "/health",
+      "dest": "/api/health"
+    },
+    {
+      "src": "/",
+      "dest": "/api/health"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
