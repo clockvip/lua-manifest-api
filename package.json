@@ -1,17 +1,16 @@
 {
   "name": "lua-manifest-api",
   "version": "1.0.0",
+  "type": "module", 
   "description": "Steam Lua Manifest Files Proxy API",
   "main": "api/[appId].lua.js",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "node api/[appId].lua.js"
+    "dev": "vercel dev"
   },
   "dependencies": {
     "node-fetch": "^3.3.2"
   },
   "engines": {
     "node": ">=18.0.0"
-  },
-  "license": "MIT"
+  }
 }
